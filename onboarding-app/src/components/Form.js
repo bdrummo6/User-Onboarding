@@ -60,7 +60,7 @@ const UserForm = ({ errors, touched, values, status }) => {
             )}
             <label className='termsCheckbox' style={fieldStyle} >
                Agree to the terms of service:
-               <Field type='checkbox' name='terms' checked={values.terms}style={checkStyle} />
+               <Field type='checkbox' name='terms' checked={values.terms} style={checkStyle} />
                <span className='check' />
             </label>
             <Button type='submit' style={btnStyle}>Submit</Button>
