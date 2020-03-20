@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from "formik";
+import axios from 'axios';
 import * as Yup from 'yup';
 
 
@@ -15,15 +16,15 @@ const UserForm = ({ errors, touched, values, status }) => {
       <div className='form-container'>
          <h1>Sign Up Form</h1>
          <Form>
-            <Field type='text' name='name' placeholder='Enter full name' maxlength='30'/>
+            <Field type='text' name='name' placeholder='Full name' maxlength='30'/>
             {touched.name && errors.name && (
                <p className='error'>{errors.name}</p>
             )}
-            <Field type='text' name='email' placeholder='Enter email' maxlength='30'/>
+            <Field type='text' name='email' placeholder='Email' maxlength='30'/>
             {touched.email && errors.email && (
                <p className='error'>{errors.email}</p>
             )}
-            <Field type='password' name='password' placeholder='Enter password' maxlength='30'/>
+            <Field type='password' name='password' placeholder='Password' maxlength='30'/>
             {touched.password && errors.password && (
                <p className='error'>{errors.password}</p>
             )}
@@ -45,7 +46,6 @@ const UserForm = ({ errors, touched, values, status }) => {
    )
 };
 
-
 const FormikUserForm = withFormik ({
    mapPropsToValues({name, email, password, terms}) {
       return {
@@ -63,6 +63,16 @@ const FormikUserForm = withFormik ({
       password: Yup.string().required('Password Required!')
    }),
 
+
+   handleSubmit(values, { setStatus }) {
+      axios
+         .post('https://reqres.in/api/users', values)
+         .then(response => {
+            setStatus(response.data);
+            console.log(response);
+         })
+         .catch(err => console.log(err.response));
+   }
 
 }) (UserForm);
 
