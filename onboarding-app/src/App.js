@@ -1,15 +1,15 @@
 import React from 'react';
 
-import UserForm from "./components/Form";
-
 import './App.css';
 
+import UserForm from "./components/Form";
+
 function App() {
-  return (
-    <div className='App'>
-      <UserForm />
-    </div>
-  );
+   return (
+      <div className="App">
+         <UserForm />
+      </div>
+   );
 }
 
 export default App;
