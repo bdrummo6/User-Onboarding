@@ -6,7 +6,7 @@ import UserForm from "./components/Form";
 
 function App() {
    
-   document.title = 'User Onboarding App';
+   document.title = 'User-Onboarding App';
    
    return (
       <div className="App">
